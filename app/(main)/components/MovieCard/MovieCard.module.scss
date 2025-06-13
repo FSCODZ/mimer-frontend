@@ -2,32 +2,35 @@
 @use '../../../styles/mixins' as *;
 
 .movieCard {
-  background: $color-dark;
+  width: 200px;
   border-radius: 8px;
   overflow: hidden;
-  @include card-shadow;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
 
-  .posterContainer {
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  .posterWrapper {
     position: relative;
     width: 100%;
-    height: 0;
-    padding-bottom: 20%;
-    background-color: $color-gray;
+    height: 300px;
+    background: $color-gray-light;
 
-    .posterImage {
+    .poster {
       object-fit: cover;
-    }
-
-    .posterPlaceholder {
-      position: absolute;
-      top: 0;
-      left: 0;
       width: 100%;
       height: 100%;
+    }
+
+    .posterFallback {
       display: flex;
       align-items: center;
       justify-content: center;
-      color: $color-gray-light;
+      height: 100%;
+      background: linear-gradient(135deg, $color-gray-light 0%, $color-gray 100%);
+      color: $color-gray;
     }
   }
 
@@ -35,8 +38,10 @@
     padding: $spacing-md;
 
     .movieTitle {
-      font-size: 1.2rem;
-      margin-bottom: $spacing-sm;
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 0 0 $spacing-xs 0;
+      color: $color-dark;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -44,26 +49,19 @@
 
     .movieMeta {
       display: flex;
-      justify-content: space-between;
-      margin-bottom: $spacing-sm;
-      color: $color-gray;
+      flex-direction: column;
+      gap: $spacing-xs;
 
-      .rating {
-        color: $color-primary;
-
-        .ratingIcon {
-          margin-right: $spacing-xs;
-        }
+      .movieYear {
+        font-size: 0.875rem;
+        color: $color-gray;
       }
-    }
 
-    .movieOverview {
-      font-size: 0.9rem;
-      display: -webkit-box;
-      -webkit--clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      color: $color-gray-light;
+      .movieGenres {
+        font-size: 0.75rem;
+        color: $color-gray;
+        font-style: italic;
+      }
     }
   }
 }

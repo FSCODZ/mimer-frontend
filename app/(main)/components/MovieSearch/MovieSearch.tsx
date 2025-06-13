@@ -58,17 +58,7 @@ export default function MovieSearch() {
         />
       </div>
 
-      <div className="genre-filter">
-        {(Object.keys(genreMap) as GenreKey[]).map((g) => (
-          <button
-            key={g}
-            className={genre === g ? 'active' : ''}
-            onClick={() => setGenre(g)}
-          >
-            {g}
-          </button>
-        ))}
-      </div>
+      
 
       <MovieGrid 
         movies={genre
