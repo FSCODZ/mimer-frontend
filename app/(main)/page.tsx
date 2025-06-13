@@ -4,7 +4,7 @@ import Navbar from './components/Navbar/Navbar';
 
 export const metadata: Metadata = {
   title: 'Movie Search | Mimer',
-  description: 'Search movies using The Movie DB API',
+  description: 'Search movies from tmbd movie api for an test for mimer test frontend',
 };
 
 export default function Home() {
