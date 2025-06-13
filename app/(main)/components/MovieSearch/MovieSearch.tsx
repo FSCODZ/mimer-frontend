@@ -3,17 +3,16 @@ import { useEffect, useState } from 'react';
 import { searchMovies } from '@/lib/api/tmdb';
 import { Movie } from '../types';
 import MovieGrid from '../MovieGrid/MovieGrid';
+import InputField from '../InputField/InputField';
 
-// 1. Skapa en typ för tillåtna genrer
 type GenreKey = keyof typeof genreMap;
 
 export default function MovieSearch() {
   const [query, setQuery] = useState('');
   const [movies, setMovies] = useState<Movie[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [genre, setGenre] = useState<GenreKey | ''>(''); // Använd vår typ här
+  const [genre, setGenre] = useState<GenreKey | ''>('');
 
-  // Ladda populära filmer vid första rendering
   useEffect(() => {
     const fetchPopularMovies = async () => {
       setIsLoading(true);
@@ -33,7 +32,6 @@ export default function MovieSearch() {
     fetchPopularMovies();
   }, []);
 
-  // Sökfunktion
   const handleSearch = async () => {
     if (!query.trim()) return;
     
@@ -52,16 +50,14 @@ export default function MovieSearch() {
     <div className="movie-search-container">
       <div className="search-header">
         <h1>The Movie Finder</h1>
-        <input
-          type="text"
+        <InputField
           value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={setQuery}
           placeholder="Search movie, TV shows or actors"
-          onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
+          onEnter={handleSearch}
         />
       </div>
 
-      {/* Genre-filtrering */}
       <div className="genre-filter">
         {(Object.keys(genreMap) as GenreKey[]).map((g) => (
           <button
@@ -85,7 +81,6 @@ export default function MovieSearch() {
   );
 }
 
-// 2. Definiera genreMap som en konstant med explicit typ
 const genreMap = {
   Comedy: 35,
   Drama: 18,
