@@ -1,0 +1,69 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.movieCard {
+  background: $color-dark;
+  border-radius: 8px;
+  overflow: hidden;
+  @include card-shadow;
+
+  .posterContainer {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 20%;
+    background-color: $color-gray;
+
+    .posterImage {
+      object-fit: cover;
+    }
+
+    .posterPlaceholder {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $color-gray-light;
+    }
+  }
+
+  .movieInfo {
+    padding: $spacing-md;
+
+    .movieTitle {
+      font-size: 1.2rem;
+      margin-bottom: $spacing-sm;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .movieMeta {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: $spacing-sm;
+      color: $color-gray;
+
+      .rating {
+        color: $color-primary;
+
+        .ratingIcon {
+          margin-right: $spacing-xs;
+        }
+      }
+    }
+
+    .movieOverview {
+      font-size: 0.9rem;
+      display: -webkit-box;
+      -webkit--clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      color: $color-gray-light;
+    }
+  }
+}
