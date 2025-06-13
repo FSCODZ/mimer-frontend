@@ -1,0 +1,123 @@
+.navbar {
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1000;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  &__logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  &__links {
+    display: flex;
+    gap: 2rem;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  &__link {
+    color: #333;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 0.5rem 0;
+    position: relative;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #00a8e1;
+    }
+
+    &.active {
+      color: #00a8e1;
+      font-weight: bold;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: #00a8e1;
+      }
+    }
+  }
+
+  .mobileMenuButton {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #333;
+    cursor: pointer;
+
+    @media (max-width: 768px) {
+      display: block;
+    }
+  }
+
+  .mobileSearch {
+    display: none;
+    font-size: 1.2rem;
+    color: #333;
+    margin-left: 1rem;
+
+    @media (max-width: 768px) {
+      display: block;
+    }
+  }
+
+  .mobileMenu {
+    display: none;
+    flex-direction: column;
+    background-color: #fff;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 1rem 2rem;
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: all 0.3s ease;
+
+    &.open {
+      transform: translateY(0);
+      opacity: 1;
+      display: flex;
+    }
+
+    @media (min-width: 769px) {
+      display: none !important;
+    }
+  }
+
+  .mobileLink {
+    color: #333;
+    text-decoration: none;
+    padding: 0.8rem 0;
+    font-size: 1.1rem;
+    border-bottom: 1px solid #eee;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &.active {
+      color: #00a8e1;
+      font-weight: bold;
+    }
+  }
+}

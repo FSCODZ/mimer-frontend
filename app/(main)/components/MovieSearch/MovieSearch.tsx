@@ -49,7 +49,6 @@ export default function MovieSearch() {
   return (
     <div className="movie-search-container">
       <div className="search-header">
-        <h1>The Movie Finder</h1>
         <InputField
           value={query}
           onChange={setQuery}
